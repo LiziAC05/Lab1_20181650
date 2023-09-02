@@ -28,6 +28,7 @@
         android:layout_marginBottom="28dp"
         android:text="TeleAhorcado"
         android:textAlignment="center"
+        android:textColor="#090909"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
