@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -28,6 +29,11 @@ public class MenuActivity extends AppCompatActivity {
     public void onContextItemSelect(@NonNull MenuItem item){
         super.onContextItemSelected(item);
 
+    }
+
+    public void irAlJuego(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 }
