@@ -8,13 +8,25 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="329dp"
-        android:layout_height="405dp"
+        android:layout_width="263dp"
+        android:layout_height="360dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/antenna_sin_fondo"
-        tools:layout_editor_absoluteY="88dp" />
+        tools:layout_editor_absoluteY="68dp" />
+
+    <Button
+        android:id="@+id/buttonJuego"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="80dp"
+        android:text="Nuevo Juego"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
