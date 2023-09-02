@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lab1_20181650.databinding.ActivityMenuBinding;
 
@@ -40,8 +41,20 @@ public class MenuActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_context,menu);
     }
 
-   /* @Override
+   @Override
     public boolean onContextItemSelected(@NonNull MenuItem item){
-
-    }*/
+        switch(item.getItemId()){
+            case R.id.textoRojo:
+                Toast.makeText(this,"TextoRojo", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.textoVerde:
+                Toast.makeText(this,"TextoVerde", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.textoAzul:
+                Toast.makeText(this,"TextoAzul", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
 }
