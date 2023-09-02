@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
-        android:id="@+id/textView2"
-        android:orderInCategory="10"
-        android:title="TeleAhorcado"
-        app:showAsAction="always"/>
+        android:title="TeleAhorcado - ROJO"
+        android:textColor="#FB1616"/>
+    <item
+        android:textColor="#78C123"
+        android:title="TeleAhorcado - VERDE" />
+    <item
+        android:textColor="#1530CA"
+        android:title="TeleAhorcado - AZUL" />
 </menu>
