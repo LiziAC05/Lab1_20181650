@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,12 +35,17 @@ public class MainActivity extends AppCompatActivity {
     TextView txtIntentos;
     String intentos;
     Image imagen1; //cabeza
+    ImageView imageViewCabeza;
     Image imagen2; //torso
+    ImageView imageViewTorso;
     Image imagen3; //brazo derecho
+    ImageView imageViewBrazoDerecho;
     Image imagen4; //brazo izquierdo
+    ImageView imageViewBrazoIzquierdo;
     Image imagen5; //pierna izquierda
+    ImageView imageViewPiernaIzquierda;
     Image imagen6; //pierna derecha
-
+    ImageView imageViewPiernaDerecha;
     final String GANADOR = "Gano";
     final String PERDEROR = "Perdio";
     Animation rotateAnimation;
@@ -84,12 +90,19 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("TeleAhorcado");
         listaPalabras = new ArrayList<String>();
         palabraIncog = (TextView) findViewById(R.id.palabraInc);
+        txtIntentos = (TextView) findViewById(R.id.txtIntentos);
         edtIn = (EditText) findViewById(R.id.edtInput);
-        InputStream inputStream = null;
+        listaPalabras.add("REDES");
+        listaPalabras.add("PROPA");
+        listaPalabras.add("PUCP");
+        listaPalabras.add("TELITO");
+        listaPalabras.add("TELECO");
+        listaPalabras.add("BATI");
+        /*InputStream inputStream = null;
         Scanner in = null;
         String palabra = "";
         try  {
-            inputStream = getAssets().open("palabras_ahorcado");
+            inputStream = getAssets().open("/database/palabras_ahorcado.txt");
             in = new Scanner(inputStream);
             while(in.hasNext()){
                 palabra = in.next();
@@ -109,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e){
                 Toast.makeText(MainActivity.this, e.getClass().getSimpleName() + " : " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        }
+        }*/
         iniciaJuego();
         edtIn.addTextChangedListener(new TextWatcher() {
             @Override
@@ -139,15 +152,28 @@ public class MainActivity extends AppCompatActivity {
                 revelarLetraPalabra(letra);
                 despliegaPalabraPantalla();
                 if(!palabraDesplegada.contains("_")){
-                    //decir mensaje de gano
+                    txtIntentos.setText(GANADOR + ": Termino en ");
                 }
             }
         }
         else{
             //revelará la imagen una por una
             //desplegarImagen();
+            //perdio el juego
+            if(intentos.isEmpty()){
+                txtIntentos.setText(PERDEROR + ": Termino en ");
+                palabraIncog.setText(palabraIncoS);
+            }
         }
     }
+
+    /*public void desplegarImagen(){
+
+    }*/
+
+   /* public void reiniciaJuego(){
+        iniciaJuego();
+    }*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main_act,menu);
