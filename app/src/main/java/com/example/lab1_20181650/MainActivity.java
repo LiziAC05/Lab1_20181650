@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -30,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
     EditText edtIn;
     String palabraDesplegada;
     char[] letraPalabraDesplegada;
+    TextView txtIntentos;
+    String intentos;
+    Image imagen1; //cabeza
+    Image imagen2; //torso
+    Image imagen3; //brazo derecho
+    Image imagen4; //brazo izquierdo
+    Image imagen5; //pierna izquierda
+    Image imagen6; //pierna derecha
+
     final String GANADOR = "Gano";
     final String PERDEROR = "Perdio";
     Animation rotateAnimation;
@@ -64,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
         palabraDesplegada = String.valueOf(letraPalabraDesplegada);
         despliegaPalabraPantalla();
         edtIn.setText("");
+        intentos = " ";
+        txtIntentos.setText(intentos);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
