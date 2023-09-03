@@ -5,16 +5,16 @@
     <item
         android:id="@+id/textoRojo"
         android:textColor="#FB1616"
-        android:title="TeleAhorcado - ROJO"
+        android:title="TeleAhorcado-ROJO"
         app:showAsAction="withText" />
     <item
         android:id="@+id/textoVerde"
         android:textColor="#78C123"
-        android:title="TeleAhorcado - VERDE"
+        android:title="TeleAhorcado-VERDE"
         app:showAsAction="withText" />
     <item
         android:id="@+id/textoAzul"
         android:textColor="#1530CA"
-        android:title="TeleAhorcado - AZUL"
+        android:title="TeleAhorcado-AZUL"
         app:showAsAction="withText" />
 </menu>

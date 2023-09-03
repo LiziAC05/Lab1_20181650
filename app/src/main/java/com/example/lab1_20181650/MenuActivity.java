@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -21,13 +22,15 @@ import com.example.lab1_20181650.databinding.ActivityMenuBinding;
 public class MenuActivity extends AppCompatActivity {
 
     ActivityMenuBinding binding;
-
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        registerForContextMenu((TextView) findViewById(R.id.textView2));
+        TextView textView = (TextView) findViewById(R.id.textView2);
+        registerForContextMenu(textView);
+
         Button button = findViewById(R.id.button);
         button.setOnClickListener(view -> {
             Intent intent = new Intent(MenuActivity.this, MainActivity.class);
@@ -41,20 +44,15 @@ public class MenuActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_context,menu);
     }
 
-   @Override
+    @Override
     public boolean onContextItemSelected(@NonNull MenuItem item){
-        switch(item.getItemId()){
-            case R.id.textoRojo:
-                Toast.makeText(this,"TextoRojo", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.textoVerde:
-                Toast.makeText(this,"TextoVerde", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.textoAzul:
-                Toast.makeText(this,"TextoAzul", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onContextItemSelected(item);
+        if (item.getTitle() == "TeleAhorcado-ROJO"){
+            textView.setTextColor(Color.RED);
+        } else if (item.getTitle() == "TeleAhorcado-VERDE"){
+            textView.setTextColor(Color.GREEN);
+        } else if (item.getTitle() == "TeleAhorcado-AZUL"){
+            textView.setTextColor(Color.BLUE);
         }
+        return true;
     }
 }
