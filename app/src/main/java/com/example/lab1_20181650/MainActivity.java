@@ -98,31 +98,6 @@ public class MainActivity extends AppCompatActivity {
         listaPalabras.add("TELITO");
         listaPalabras.add("TELECO");
         listaPalabras.add("BATI");
-        /*InputStream inputStream = null;
-        Scanner in = null;
-        String palabra = "";
-        try  {
-            inputStream = getAssets().open("/database/palabras_ahorcado.txt");
-            in = new Scanner(inputStream);
-            while(in.hasNext()){
-                palabra = in.next();
-                listaPalabras.add(palabra);
-            }
-        } catch (IOException e){
-            Toast.makeText(MainActivity.this, e.getClass().getSimpleName() + " : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-        finally {
-            if(in != null){
-                in.close();
-            }
-            try{
-                if(inputStream != null){
-                    inputStream.close();
-                }
-            } catch (IOException e){
-                Toast.makeText(MainActivity.this, e.getClass().getSimpleName() + " : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }*/
         iniciaJuego();
         edtIn.addTextChangedListener(new TextWatcher() {
             @Override
