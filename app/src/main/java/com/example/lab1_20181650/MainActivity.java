@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -46,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
     Image imagen5; //pierna derecha
     ImageView hang5;
     Integer count = 0;
-
+    Instant instantStart, instantEnd;
 
     Animation rotateAnimation;
     Animation scaleAnimation;
     Animation scaleAndRotateAnimation;
-    ArrayList<String> estadisticas = new ArrayList();
+    ArrayList<String> estadisticasAhorcado = new ArrayList();
     public void revelarLetraPalabra(char letra){
         int indiceLetra  = palabraIncoS.indexOf(letra);
         //itera si el indice es positivo o 0
@@ -71,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
         palabraIncog.setText(palabraFormada);
     }
     public void iniciaJuego(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            instantStart = Instant.now();
+        }
         //mezcla las matrices
         Collections.shuffle(listaPalabras);
         palabraIncoS = listaPalabras.get(0);
@@ -159,7 +164,17 @@ public class MainActivity extends AppCompatActivity {
                 despliegaPalabraPantalla();
                 //ver si se gano el juego
                 if(!palabraDesplegada.contains("_")){
-                    txtIntentos.setText(GANADOR + ": Termino en ");
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        instantEnd = Instant.now();
+                    }
+
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                        long seconds = instantEnd.getEpochSecond() - instantStart.getEpochSecond();
+                        String tiempo = Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+                        String estadistica = "Juego " + (estadisticasAhorcado.size() + 1) + " : Terminó en " + tiempo;
+                        estadisticasAhorcado.add(estadistica);
+                        txtIntentos.setText(GANADOR + ": Termino en "+tiempo);
+                    }
                 }
             }
         }
@@ -168,14 +183,24 @@ public class MainActivity extends AppCompatActivity {
             desplegarImagen();
             //perdio el juego
             if(intentos.isEmpty()){
-                txtIntentos.setText(PERDEROR + ": Termino en ");
-                palabraIncog.setText(palabraIncoS);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    instantEnd = Instant.now();
+                }
+
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    long seconds = instantEnd.getEpochSecond() - instantStart.getEpochSecond();
+                    String tiempo = Math.round((seconds / 60.0) * 100.0) / 100.0 + " minutos";
+                    String estadistica = "Juego " + (estadisticasAhorcado.size() + 1) + " : Terminó en " + tiempo;
+                    estadisticasAhorcado.add(estadistica);
+                    txtIntentos.setText(PERDEROR + ": Termino en "+tiempo);
+                    palabraIncog.setText(palabraIncoS);
+                }
             }
         }
         if(seisIntentos.indexOf(letra) > 0){
             seisIntentos += letra + ", ";
             String mensajeDesplegado = MENSAJE + seisIntentos;
-            txtSeisIntentos.setText(seisIntentos);
+            txtSeisIntentos.setText(mensajeDesplegado);
         }
     }
 
@@ -188,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
         hang4 = (ImageView) findViewById(R.id.hang4);
         hang5 = (ImageView) findViewById(R.id.hang5);
         count = 0;
+        //ArrayList<ImageView>
         if(!intentos.isEmpty()){
             intentos = intentos.substring(0, intentos.length() - 2);
             txtIntentos.setText(intentos);
@@ -196,6 +222,10 @@ public class MainActivity extends AppCompatActivity {
 
 
    public void reiniciaJuego(View view){
+        if(!intentos.isEmpty()){
+            String statitiscs = "Juego " +(estadisticasAhorcado.size() + 1) +" : "+ "Canceló";
+            estadisticasAhorcado.add(statitiscs);
+        }
         iniciaJuego();
     }
     @Override
@@ -207,6 +237,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         if(item.getItemId() == R.id.stadistics){
             Intent intent = new Intent(MainActivity.this, StatsActivity.class);
+            intent.putExtra("estadisticas",estadisticasAhorcado);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
