@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/antenna_sin_fondo" />
 
     <ImageView
-        android:id="@+id/imageViewBrazoIzquierdo"
+        android:id="@+id/hang3"
         android:layout_width="60dp"
         android:layout_height="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,10 +28,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.315"
-        app:srcCompat="@drawable/brazoizquierdo" />
+        app:srcCompat="@drawable/hang3" />
 
     <ImageView
-        android:id="@+id/imageViewPiernaDerecha"
+        android:id="@+id/hang5"
         android:layout_width="54dp"
         android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,22 +40,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.406"
-        app:srcCompat="@drawable/piernaderecha" />
+        app:srcCompat="@drawable/hang5" />
 
     <ImageView
-        android:id="@+id/imageViewTorso"
+        android:id="@+id/hang1"
         android:layout_width="51dp"
         android:layout_height="88dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.794"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewCabeza"
+        app:layout_constraintTop_toBottomOf="@+id/hang0"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/torso" />
+        app:srcCompat="@drawable/hang1" />
 
     <ImageView
-        android:id="@+id/imageViewBrazoDerecho"
+        android:id="@+id/hang2"
         android:layout_width="61dp"
         android:layout_height="43dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,10 +64,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.315"
-        app:srcCompat="@drawable/brazoderecho" />
+        app:srcCompat="@drawable/hang2" />
 
     <ImageView
-        android:id="@+id/imageViewPiernaIzquierda"
+        android:id="@+id/hang4"
         android:layout_width="49dp"
         android:layout_height="69dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,10 +76,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.404"
-        app:srcCompat="@drawable/piernaizquierda" />
+        app:srcCompat="@drawable/hang4" />
 
     <ImageView
-        android:id="@+id/imageViewCabeza"
+        android:id="@+id/hang0"
         android:layout_width="73dp"
         android:layout_height="72dp"
         android:layout_marginTop="132dp"
@@ -87,33 +87,22 @@
         app:layout_constraintHorizontal_bias="0.804"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cabeza" />
+        app:srcCompat="@drawable/hang0" />
 
 
     <Button
+        android:background="@color/colorButton"
         android:id="@+id/buttonJuego"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
         android:layout_marginEnd="120dp"
         android:layout_marginBottom="64dp"
+        android:gravity="center"
         android:onClick="reiniciaJuego"
         android:text="Nuevo Juego"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/palabraInc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
-        android:layout_marginEnd="172dp"
-        android:layout_marginBottom="35dp"
-        android:text="Palabra a Adivinar"
-        app:layout_constraintBottom_toTopOf="@+id/edtInput"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -121,17 +110,35 @@
         android:layout_width="48dp"
         android:layout_height="47dp"
         android:layout_marginStart="182dp"
-        android:layout_marginTop="488dp"
+        android:layout_marginTop="400dp"
         android:layout_marginEnd="182dp"
+        android:hint="Ingrese una letra"
+        android:textSize="20dp"
         android:ems="10"
         android:inputType="text"
+        android:gravity="center"
         android:maxLength="1"
         app:layout_constraintBottom_toTopOf="@+id/txtIntentos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.28" />
+
+    <TextView
+        android:id="@+id/palabraInc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="172dp"
+        android:layout_marginEnd="172dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:text="Palabra a Adivinar"
+        app:layout_constraintBottom_toTopOf="@+id/edtInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textAviso"
@@ -139,9 +146,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="172dp"
         android:layout_marginEnd="172dp"
+        android:gravity="center"
         android:layout_marginBottom="12dp"
         android:text="RECUERDA: Solo letras mayusculas"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonJuego"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -151,9 +159,30 @@
         android:id="@+id/txtIntentos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginEnd="172dp"
+        android:layout_marginBottom="28dp"
+        android:gravity="center"
+        android:textSize="20dp"
         android:text="Intentos"
         app:layout_constraintBottom_toTopOf="@+id/textAviso"
-        tools:layout_editor_absoluteX="176dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textSeisIntentos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="172dp"
+        android:layout_marginEnd="172dp"
+        android:text="Palabra Ingresada"
+        android:gravity="center"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.703" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
