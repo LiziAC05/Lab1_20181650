@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
         //intentos sobrantes
         //inicializa los intentos sobrantes
-        intentos = " X X X X X X";
+        intentos = "XXXXXX";
         txtIntentos.setText(intentos);
     }
     @Override
@@ -171,18 +171,37 @@ public class MainActivity extends AppCompatActivity {
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                         long seconds = instantEnd.getEpochSecond() - instantStart.getEpochSecond();
                         String tiempo = Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-                        String estadistica = "Juego " + (estadisticasAhorcado.size() + 1) + " : Terminó en " + tiempo;
+                        String estadistica = "Juego " + (estadisticasAhorcado.size() + 1) + "Ganó : Terminó en " + tiempo;
                         estadisticasAhorcado.add(estadistica);
                         txtIntentos.setText(GANADOR + ": Termino en "+tiempo);
                     }
                 }
             }
         }
-        else{
-            //revelará la imagen una por una
-            desplegarImagen();
-            //perdio el juego
-            if(intentos.isEmpty()){
+        else if(!intentos.isEmpty()){
+            {
+                //revelará la imagen una por una
+                int count;
+                for (count = 0; count < intentos.length(); count++) {
+                    desplegarImagen(count);
+                }
+                intentos = intentos.substring(0, intentos.length()-1);
+                txtIntentos.setText(intentos);
+
+            }if(intentos.isEmpty()){
+
+                hang0 = (ImageView) findViewById(R.id.hang0);
+                hang1 = (ImageView) findViewById(R.id.hang1);
+                hang2 = (ImageView) findViewById(R.id.hang2);
+                hang3 = (ImageView) findViewById(R.id.hang3);
+                hang4 = (ImageView) findViewById(R.id.hang4);
+                hang5 = (ImageView) findViewById(R.id.hang5);
+                hang0.setVisibility(View.VISIBLE);
+                hang1.setVisibility(View.VISIBLE);
+                hang2.setVisibility(View.VISIBLE);
+                hang3.setVisibility(View.VISIBLE);
+                hang4.setVisibility(View.VISIBLE);
+                hang5.setVisibility(View.VISIBLE);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     instantEnd = Instant.now();
                 }
@@ -190,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                     long seconds = instantEnd.getEpochSecond() - instantStart.getEpochSecond();
                     String tiempo = Math.round((seconds / 60.0) * 100.0) / 100.0 + " minutos";
-                    String estadistica = "Juego " + (estadisticasAhorcado.size() + 1) + " : Terminó en " + tiempo;
+                    String estadistica = "Juego " + (estadisticasAhorcado.size() + 1) + " Perdió : Terminó en " + tiempo;
                     estadisticasAhorcado.add(estadistica);
                     txtIntentos.setText(PERDEROR + ": Termino en "+tiempo);
                     palabraIncog.setText(palabraIncoS);
@@ -204,21 +223,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void desplegarImagen(){
+    public void desplegarImagen(int count) {
         //algunos intentos
-        hang0 = (ImageView) findViewById(R.id.hang0);
-        hang1 = (ImageView) findViewById(R.id.hang1);
-        hang2 = (ImageView) findViewById(R.id.hang2);
-        hang3 = (ImageView) findViewById(R.id.hang3);
-        hang4 = (ImageView) findViewById(R.id.hang4);
-        hang5 = (ImageView) findViewById(R.id.hang5);
-        count = 0;
-        //ArrayList<ImageView>
-        if(!intentos.isEmpty()){
-            intentos = intentos.substring(0, intentos.length() - 2);
-            txtIntentos.setText(intentos);
+        switch (count) {
+            case 0:
+                hang0 = (ImageView) findViewById(R.id.hang0);
+                hang0.setVisibility(View.VISIBLE);
+                break;
+            case 1:
+                hang1 = (ImageView) findViewById(R.id.hang1);
+                hang1.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                hang2 = (ImageView) findViewById(R.id.hang2);
+                hang2.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                hang3 = (ImageView) findViewById(R.id.hang3);
+                hang3.setVisibility(View.VISIBLE);
+                break;
+            case 4:
+                hang4 = (ImageView) findViewById(R.id.hang4);
+                hang4.setVisibility(View.VISIBLE);
+                break;
         }
     }
+
 
 
    public void reiniciaJuego(View view){
